@@ -1217,11 +1217,16 @@ textarea:focus {
   .related-grid {
     grid-template-columns: 1fr;
   }
+  .product-hero-grid {
+    padding-top: 30px;
+  }
 
   .vehicle-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+
 
 @media (max-width: 680px) {
   .site-header {
