@@ -8,6 +8,7 @@ Luxury animated Next.js catalog website for **Myrdams Cars for Sales Davao**.
 - Static export support for GitHub Pages
 - Advanced motion using Framer Motion
 - Vehicle cards with posted PHP prices
+- Dedicated product pages for every listed unit
 - Animated filtering by body type, fuel, transmission, price range, search, and sort order
 - 3D hover tilt cards, animated hero treatment, detail modal transitions, and scroll reveals
 - Inquiry-focused contact section with no online checkout or payment wall
@@ -25,6 +26,12 @@ npm run dev
 ```bash
 npm run build
 ```
+
+The catalog routes each car to a static product page such as:
+
+- `/cars/fortuner-v-2023`
+- `/cars/bmw-3-2021`
+- `/cars/ranger-raptor-2023`
 
 ## Image credits
 
