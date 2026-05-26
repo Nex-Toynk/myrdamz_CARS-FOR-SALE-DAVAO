@@ -16,12 +16,12 @@ export async function generateMetadata({ params }) {
 
   if (!vehicle) {
     return {
-      title: "Vehicle Not Found | Myrdams Cars for Sales Davao"
+      title: "Vehicle Not Found | Myrdamz Cars for Sales Davao"
     };
   }
 
   return {
-    title: `${vehicle.name} | Myrdams Cars for Sales Davao`,
+    title: `${vehicle.name} | Myrdamz Cars for Sales Davao`,
     description: `${vehicle.name} listed at ${vehicle.price.toLocaleString("en-PH")} PHP. ${vehicle.description}`
   };
 }

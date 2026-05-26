@@ -1,6 +1,6 @@
 # myrdamz_CARS-FOR-SALE-DAVAO
 
-Luxury animated Next.js catalog website for **Myrdams Cars for Sales Davao**.
+Luxury animated Next.js catalog website for **Myrdamz Cars for Sales Davao**.
 
 ## What is included
 

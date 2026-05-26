@@ -53,15 +53,15 @@ function ProductHeader() {
     <header
     className={`site-header ${isScrolled ? "is-scrolled" : ""}`}
   >
-    <Link className="brand" href="/" aria-label="Myrdams Cars for Sales Davao home">
+    <Link className="brand" href="/" aria-label="Myrdamz Cars for Sales Davao home">
       <motion.span
        className="brand-mark"
-            animate={{ rotate: [0, 6, -4, 0], boxShadow: ["0 0 0 rgba(102,217,241,0)", "0 0 38px rgba(102,217,241,.38)", "0 0 0 rgba(102,217,241,0)"] }}
+            animate={{ rotate: [0, 6, -4, 0], boxShadow: ["0 0 0 rgba(237,28,36,0)", "0 0 38px rgba(237,28,36,.32)", "0 0 0 rgba(237,28,36,0)"] }}
             transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
       >
         <Image
           src={logo}
-          alt="Myrdams Cars for Sales Davao logo"
+          alt="Myrdamz Cars for Sales Davao logo"
           width={45}
           height={45}
           className="brand-logo"
@@ -69,7 +69,7 @@ function ProductHeader() {
       </motion.span>
 
       <span>
-        <strong>Myrdams</strong>
+        <strong>Myrdamz</strong>
         <small>Cars for Sales Davao</small>
       </span>
     </Link>
@@ -109,7 +109,7 @@ export default function ProductPageClient({ vehicle, related }) {
       <section className="product-hero">
         <motion.div
           className="product-hero-bg"
-          style={{ backgroundImage: `linear-gradient(90deg, rgba(4,54,80,.84), rgba(7,111,148,.5), rgba(239,251,255,.14)), url("${vehicle.image}")` }}
+          style={{ backgroundImage: `linear-gradient(90deg, rgba(0,0,0,.66), rgba(237,28,36,.34), rgba(247,247,247,.18)), url("${vehicle.image}")` }}
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1.35, ease: [0.19, 1, 0.22, 1] }}
@@ -239,7 +239,7 @@ export default function ProductPageClient({ vehicle, related }) {
       </section>
 
       <footer className="site-footer">
-        <p>Myrdams Cars for Sales Davao. Product page for {vehicle.name}.</p>
+        <p>Myrdamz Cars for Sales Davao. Product page for {vehicle.name}.</p>
         <p>Representative images from Pexels and Unsplash research.</p>
       </footer>
     </main>

@@ -15,6 +15,7 @@ import {
   CalendarDays,
   CarFront,
   Gauge,
+  MapPin,
   MessageCircle,
   RefreshCw,
   Search,
@@ -32,6 +33,10 @@ import hero4 from "./pictures/CarHeroBG4.jpg";
 import hero5 from "./pictures/CarHeroBG5.jpg";
 
 const heroImages = [hero1, hero2, hero3, hero4, hero5];
+const mapsLocationUrl =
+  "https://www.google.com/maps/search/?api=1&query=MYRDAMZ%20CAR%20DISPLAY%20CENTER%20%2F%20CARS%20FOR%20SALE%20DAVAO";
+const mapsEmbedUrl =
+  "https://maps.google.com/maps?hl=en&q=MYRDAMZ%20CAR%20DISPLAY%20CENTER%20%2F%20CARS%20FOR%20SALE%20DAVAO&z=16&output=embed";
 
 
 const fadeUp = {
@@ -155,15 +160,15 @@ useEffect(() => {
   <header
   className={`site-header ${isScrolled ? "is-scrolled" : ""}`}
   >
-    <Link className="brand" href="/" aria-label="Myrdams Cars for Sales Davao home">
+    <Link className="brand" href="/" aria-label="Myrdamz Cars for Sales Davao home">
       <motion.span
             className="brand-mark"
-            animate={{ rotate: [0, 6, -4, 0], boxShadow: ["0 0 0 rgba(102,217,241,0)", "0 0 38px rgba(102,217,241,.38)", "0 0 0 rgba(102,217,241,0)"] }}
+            animate={{ rotate: [0, 6, -4, 0], boxShadow: ["0 0 0 rgba(237,28,36,0)", "0 0 38px rgba(237,28,36,.32)", "0 0 0 rgba(237,28,36,0)"] }}
             transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
           >
         <Image
           src={logo}
-          alt="Myrdams Cars for Sales Davao logo"
+          alt="Myrdamz Cars for Sales Davao logo"
           width={45}
           height={45}
           className="brand-logo"
@@ -171,7 +176,7 @@ useEffect(() => {
       </motion.span>
 
       <span>
-        <strong>MYRDAMS</strong>
+        <strong>MYRDAMZ</strong>
         <small>Cars for Sales Davao</small>
       </span>
     </Link>
@@ -195,7 +200,7 @@ useEffect(() => {
       key={image.src}
       className="hero-bg-slide"
       style={{
-        backgroundImage: `linear-gradient(90deg, rgba(4, 54, 80, 0.82) 0%, rgba(7, 111, 148, 0.58) 45%, rgba(239, 251, 255, 0.16) 100%), url(${image.src})`,
+        backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0.66) 0%, rgba(237, 28, 36, 0.36) 45%, rgba(247, 247, 247, 0.18) 100%), url(${image.src})`,
       }}
       animate={{
         opacity: heroIndex === index ? 1 : 0,
@@ -218,7 +223,7 @@ useEffect(() => {
         <motion.div className="hero-content" variants={stagger} initial="hidden" animate="visible">
           <p className="eyebrow">{inventory.length} Units In Stock!</p>
           <motion.h1 id="hero-title" variants={fadeUp}>
-            Myrdams Cars for Sales Davao
+            Myrdamz Cars for Sales Davao
           </motion.h1>
           <motion.p className="hero-copy" variants={fadeUp}>
             Find your next ride in Davao with trusted cars, clear deals, and a smoother buying experience.
@@ -450,9 +455,26 @@ useEffect(() => {
           <p className="eyebrow">Contact</p>
           <h2 id="contact-title">Book a viewing in Davao</h2>
           <p>
-            The form stays inquiry-only. Add the real phone number, Facebook page, showroom address,
-            or email endpoint when the business is ready.
+            Send an inquiry, then visit the display center to inspect available units in person.
           </p>
+          <div className="map-card">
+            <div className="map-frame">
+              <iframe
+                title="MYRDAMZ Car Display Center map"
+                src={mapsEmbedUrl}
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+            <div className="map-caption">
+              <MapPin size={20} />
+              <span>MYRDAMZ CAR DISPLAY CENTER / CARS FOR SALE DAVAO</span>
+              <a className="location-link" href={mapsLocationUrl} target="_blank" rel="noreferrer">
+                Open in Google Maps
+              </a>
+            </div>
+          </div>
         </motion.div>
 
         <motion.form className="contact-form" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }}>
@@ -495,7 +517,7 @@ useEffect(() => {
       </section>
 
       <footer className="site-footer">
-        <p>Myrdams Cars for Sales Davao.</p>
+        <p>Myrdamz Cars for Sales Davao.</p>
       </footer>
     </main>
   );

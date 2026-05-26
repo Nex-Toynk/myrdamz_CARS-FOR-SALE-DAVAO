@@ -1,9 +1,9 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Myrdams Cars for Sales Davao",
+  title: "Myrdamz Cars for Sales Davao",
   description:
-    "Luxury animated vehicle catalog for Myrdams Cars for Sales Davao, featuring posted prices and inquiry-first browsing."
+    "Luxury animated vehicle catalog for Myrdamz Cars for Sales Davao, featuring posted prices and inquiry-first browsing."
 };
 
 export default function RootLayout({ children }) {
