@@ -1,8 +1,6 @@
 import { deleteUploadedImageIfUnused, readDb, writeDb } from "../../../../lib/admin-store";
 import { json, requireAdmin } from "../_utils";
 
-export const dynamic = "force-dynamic";
-export const runtime = "nodejs";
 
 export async function POST(request) {
   const auth = requireAdmin(request);

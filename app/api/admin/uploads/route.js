@@ -3,8 +3,6 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { json, requireAdmin } from "../_utils";
 
-export const dynamic = "force-dynamic";
-export const runtime = "nodejs";
 
 const MAX_FILE_SIZE = 6 * 1024 * 1024;
 const EXTENSIONS = {

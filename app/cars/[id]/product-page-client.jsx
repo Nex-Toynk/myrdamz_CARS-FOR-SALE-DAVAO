@@ -18,7 +18,7 @@ import {
   X
 } from "lucide-react";
 import Link from "next/link";
-import { formatMileage, formatPrice } from "../../data/vehicles";
+import { formatMileage, formatPrice, getAssetPath } from "../../data/vehicles";
 import Image from "next/image";
 import logo from "../../pictures/LogoMYRDAMZ.png";
 
@@ -157,8 +157,8 @@ export default function ProductPageClient({ vehicle, related }) {
   );
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [imageDirection, setImageDirection] = useState(1);
-  const activeImage = galleryImages[activeImageIndex] || vehicle.image;
-  const coverImage = galleryImages[0] || vehicle.image;
+  const activeImage = getAssetPath(galleryImages[activeImageIndex] || vehicle.image);
+  const coverImage = getAssetPath(galleryImages[0] || vehicle.image);
   const specs = [
     ["Year", vehicle.year, BadgeCheck],
     ["Mileage", formatMileage(vehicle.mileage), Gauge],
@@ -296,7 +296,7 @@ export default function ProductPageClient({ vehicle, related }) {
               transition={{ duration: 0.55, delay: index * 0.08 }}
             >
               <Link href={`/cars/${item.id}`}>
-                <img src={item.image} alt={item.name} loading="lazy" />
+                <img src={getAssetPath(item.image)} alt={item.name} loading="lazy" />
                 <div>
                   <span>{item.status === "Sold" ? "Sold" : item.status === "Reserved" ? "Reserved" : item.badge}</span>
                   <h3>{item.name}</h3>

@@ -36,6 +36,7 @@ export default function AdminPage() {
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("");
   const [uploading, setUploading] = useState(false);
+  const isGithubPages = process.env.NEXT_PUBLIC_GITHUB_PAGES === "true";
 
   const sortedVehicles = useMemo(
     () => {
@@ -53,8 +54,9 @@ export default function AdminPage() {
   );
 
   useEffect(() => {
+    if (isGithubPages) return;
     loadSession();
-  }, []);
+  }, [isGithubPages]);
 
   async function loadSession() {
     const response = await fetch("/api/admin/session", { cache: "no-store" });
@@ -261,6 +263,23 @@ function updateVehicleForm(event) {
     setEditingId("");
     setVehicleForm(blankVehicle);
     setStatus(`Undid: ${data.undone}`);
+  }
+
+  if (isGithubPages) {
+    return (
+      <main className="admin-page">
+        <section className="admin-auth-panel">
+          <div>
+            <p className="eyebrow"><ShieldCheck size={18} /> Static prototype</p>
+            <h1>Admin is disabled on GitHub Pages</h1>
+            <p>GitHub Pages can show the public catalog, but it cannot run the admin database, uploads, or API routes. Use local dev or Vercel when you need data entry.</p>
+          </div>
+          <Link className="button button-primary" href="/">
+            <Home size={18} /> Back to Home
+          </Link>
+        </section>
+      </main>
+    );
   }
 
   if (session.loading) {

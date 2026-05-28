@@ -1,8 +1,6 @@
 import { createHistoryEntry, makeUniqueVehicleId, pushHistory, readDb, normalizeVehicle, writeDb } from "../../../../lib/admin-store";
 import { json, requireAdmin } from "../_utils";
 
-export const dynamic = "force-dynamic";
-export const runtime = "nodejs";
 
 export async function GET(request) {
   const auth = requireAdmin(request);

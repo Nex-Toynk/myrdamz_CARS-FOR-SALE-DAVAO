@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "snapshot": "node scripts/sync-static-vehicles.mjs",
     "start": "next start",
     "lint": "next lint"
   },

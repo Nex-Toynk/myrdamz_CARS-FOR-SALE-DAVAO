@@ -3,8 +3,6 @@ import { NextResponse } from "next/server";
 import { createToken, hashPassword, setAuthCookie } from "../../../../lib/admin-auth";
 import { readDb, writeDb } from "../../../../lib/admin-store";
 
-export const dynamic = "force-dynamic";
-export const runtime = "nodejs";
 
 export async function POST(request) {
   const db = await readDb();

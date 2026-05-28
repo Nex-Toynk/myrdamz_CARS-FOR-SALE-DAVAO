@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
-import { readDb } from "../../../lib/admin-store";
+import { inventory } from "../../data/vehicles";
 import ProductPageClient from "./product-page-client";
 
-export const dynamic = "force-dynamic";
+export const dynamicParams = false;
 
 function getRelatedVehicles(vehicle, inventory, count = 3) {
   return inventory
@@ -17,8 +17,7 @@ function getRelatedVehicles(vehicle, inventory, count = 3) {
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
-  const db = await readDb();
-  const vehicle = db.vehicles.find((item) => item.id === id);
+  const vehicle = inventory.find((item) => item.id === id);
 
   if (!vehicle) {
     return {
@@ -34,12 +33,15 @@ export async function generateMetadata({ params }) {
 
 export default async function VehicleProductPage({ params }) {
   const { id } = await params;
-  const db = await readDb();
-  const vehicle = db.vehicles.find((item) => item.id === id);
+  const vehicle = inventory.find((item) => item.id === id);
 
   if (!vehicle) {
     notFound();
   }
 
-  return <ProductPageClient vehicle={vehicle} related={getRelatedVehicles(vehicle, db.vehicles)} />;
+  return <ProductPageClient vehicle={vehicle} related={getRelatedVehicles(vehicle, inventory)} />;
+}
+
+export function generateStaticParams() {
+  return inventory.map((vehicle) => ({ id: vehicle.id }));
 }

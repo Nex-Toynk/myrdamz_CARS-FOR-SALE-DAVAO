@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useMemo, useRef, useState , useEffect } from "react";
-import { bodyTypes, formatMileage, formatPrice } from "./data/vehicles";
+import { bodyTypes, formatMileage, formatPrice, getAssetPath, inventory } from "./data/vehicles";
 import Image from "next/image";
 import logo from "./pictures/LogoMYRDAMZ.png";
 import hero1 from "./pictures/CarHeroBG.jpg";
@@ -127,8 +127,8 @@ export default function Home() {
     search: "",
     sort: "featured"
   });
-  const [vehicles, setVehicles] = useState([]);
-  const [vehicleLoadStatus, setVehicleLoadStatus] = useState("loading");
+  const [vehicles, setVehicles] = useState(inventory);
+  const [vehicleLoadStatus, setVehicleLoadStatus] = useState("ready");
   const [inquiryStatus, setInquiryStatus] = useState("");
   const [inquiry, setInquiry] = useState(emptyInquiry);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -177,6 +177,12 @@ useEffect(() => {
 
 useEffect(() => {
   async function loadVehicles() {
+    if (process.env.NEXT_PUBLIC_GITHUB_PAGES === "true") {
+      setVehicles(inventory);
+      setVehicleLoadStatus("ready");
+      return;
+    }
+
     setVehicleLoadStatus("loading");
     try {
       const response = await fetch("/api/vehicles", { cache: "no-store" });
@@ -186,9 +192,9 @@ useEffect(() => {
         setVehicleLoadStatus("ready");
         return;
       }
-      setVehicleLoadStatus("error");
+      setVehicleLoadStatus(inventory.length ? "ready" : "error");
     } catch {
-      setVehicleLoadStatus("error");
+      setVehicleLoadStatus(inventory.length ? "ready" : "error");
     }
   }
 
@@ -497,7 +503,7 @@ useEffect(() => {
                   transition={{ duration: 0.45, delay: Math.min(index * 0.035, 0.18), ease: [0.19, 1, 0.22, 1] }}
                 >
                   <Link className="vehicle-media" href={`/cars/${vehicle.id}`} aria-label={`View product page for ${vehicle.name}`}>
-                    <img src={vehicle.image} alt={vehicle.name} loading="lazy" />
+                    <img src={getAssetPath(vehicle.image)} alt={vehicle.name} loading="lazy" />
                     <span className={isSold(vehicle) ? "badge badge-sold" : getVehicleStatus(vehicle) === "Reserved" ? "badge badge-reserved" : "badge"}>{isSold(vehicle) ? "Sold" : getVehicleStatus(vehicle) === "Reserved" ? "Reserved" : vehicle.badge || vehicle.type}</span>
                     {/* <motion.span
                       className="card-glint"

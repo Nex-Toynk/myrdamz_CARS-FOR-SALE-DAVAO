@@ -1,4 +1,6 @@
-export const inventory = [];
+import staticVehicles from "./static-vehicles.json";
+
+export const inventory = staticVehicles;
 
 export const vehicleBodyTypes = [
   "SUV",
@@ -15,6 +17,13 @@ export const vehicleBodyTypes = [
 export const bodyTypes = ["All", ...vehicleBodyTypes];
 export const fuels = ["All", "Diesel", "Gasoline", "Hybrid"];
 export const transmissions = ["All", "Automatic", "Manual"];
+
+export function getAssetPath(src) {
+  if (!src || /^(https?:|data:|blob:)/.test(src)) return src;
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  const path = src.startsWith("/") ? src : `/${src}`;
+  return `${basePath}${path}`;
+}
 
 export function getVehicleById(id) {
   return inventory.find((vehicle) => vehicle.id === id);

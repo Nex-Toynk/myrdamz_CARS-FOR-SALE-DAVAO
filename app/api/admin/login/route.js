@@ -2,8 +2,6 @@ import { NextResponse } from "next/server";
 import { createToken, setAuthCookie, verifyPassword } from "../../../../lib/admin-auth";
 import { readDb } from "../../../../lib/admin-store";
 
-export const dynamic = "force-dynamic";
-export const runtime = "nodejs";
 
 export async function POST(request) {
   const { username, password } = await request.json();
